@@ -117,7 +117,7 @@ switch (user.gender) {
 
 三元运算符要有 `()` 包裹，且括号与语句间不能有空格，`?` 与 `:` 左右要有一个空格
 ```
-viewTitle = (title ? title : @"");
+label.title = (title ? title : @"");
 ```
 
 
@@ -234,6 +234,7 @@ viewTitle = (title ? title : @"");
 ```
 
 ### block
+
 `block` 适合用在 target/selector 模式下创建回调方法时，因为它使代码更易读。块中的代码应该缩进 `4` 个空格。
 取决于块的长度，下列都是合理的风格准则：
 
@@ -242,7 +243,6 @@ viewTitle = (title ? title : @"");
 - 块内的代码须按 4 空格缩进。
 - 如果块太长，比如超过 20 行，建议把它定义成一个局部变量，然后再使用该变量。
 - 如果块不带参数，^{ 之间无须空格。如果带有参数，^( 之间无须空格，但 ) { 之间须有一个空格。
-- 块内允许按两个空格缩进，但前提是和项目的其它代码保持一致的缩进风格。
 
 ```objc
 // The entire block fits on one line.
@@ -335,47 +335,123 @@ emails = [mailbox messagesReceivedAfterDate:yesterdayDate]; // thing + condition
 - (void)setTitl:(NSString *)aTitle;
 ```
 
-
-###变量###
-
-变量的命名应尽量做到自描述。
-除for中避免使用i,j,k;
-
-
-
-##变量相关##
-
-变量命名应该尽可能做到自描述。
-UIButton *settingsButton;
-
-对于NSString,NSArray,NSNumber或BOOL:(无需后面指定类型)
-
-NSString *accountName;
-NSMutableArray *mailboxes;
-BOOL    userInputWasUpdated;
-
-如果不是基本常用类型，要反应自身类型：
-NSImage *previewPaneImage;
-=================
-
 ### 变量名
 
-变量名应该以小写字母开头，并使用驼峰格式。类的成员变量应该以下划线作为后缀。例如：myLocalVariable、myInstanceVariable_。如果不能使用 Objective-C 2.0 的 @property，使用 KVO/KVC 绑定的成员变量可以以一个下划线作为前缀。
+变量的命名应尽量做到自描述。
+除 `for` 中避免使用 `i`, `j`, `k`。
 
-普通变量名
-实例变量
-常量
+```objc
+UIButton *settingsButton;
+```
+对于NSString,NSArray,NSNumber或BOOL:(无需后面指定类型)
+
+```objc
+NSString       *accountName;
+NSMutableArray *mailboxes;
+BOOL            userInputWasUpdated;
+```
+
+如果不是基本常用类型，要反应自身类型：
+
+```objc
+NSImage *previewPaneImage;
+```
+
+### 常量
+
+常量名（如宏定义、枚举、静态局部变量等）应该以小写字母 k 开头，使用驼峰格式分隔单词，如：`kInvalidHandle`，`kWritePerm`。
+
+### 图片资源命名
+
+TODO
 
 
 ## 注释
-文件注释
-	版权信息及维护人
 
-声明部分的注释
-实现部分的注释
+虽然写起来很痛苦，但注释是保证代码可读性的关键。下面的规则给出了你应该什么时候、在哪进行注释。记住：尽管注释很重要，但最好的代码应该自成文档。与其给类型及变量起一个晦涩难懂的名字，再为它写注释，不如直接起一个有意义的名字。
+
+当你写注释的时候，记得你是在给你的听众写，即下一个需要阅读你所写代码的贡献者。大方一点，下一个读代码的人可能就是你！
+
+## 文件注释
+
+- 每个文件的开头以文件内容的简要描述起始，紧接着是维护人，最后是版权声明和/或许可证样板。
+- 对于每个源文件要有维护人名称以及 Email 地址。
+- 维护人只能是在职人员，交接工作时应更新维护人信息。
+
+**例如:**
+
+```objc
+TODO
+```
+
+TODO: 声明部分的注释
+
+TODO: 代码中的注释
 
 
+## iOS 工程结构
 
+**目录结构**
+```
+testdrive/
+   index.php                 Web 应用入口脚本文件
+   index-test.php            功能测试使用的入口脚本文件
+   assets/                   包含公开的资源文件
+   css/                      包含 CSS 文件
+   images/                   包含图片文件
+   themes/                   包含应用主题
+   protected/                包含受保护的应用文件
+      yiic                   yiic 命令行脚本
+      yiic.bat               Windows 下的 yiic 命令行脚本
+      yiic.php               yiic 命令行 PHP 脚本
+      commands/              包含自定义的 'yiic' 命令
+         shell/              包含自定义的 'yiic shell' 命令
+      components/            包含可重用的用户组件
+         Controller.php      所有控制器类的基础类
+         Identity.php        用来认证的 'Identity' 类
+      config/                包含配置文件
+         console.php         控制台应用配置
+         main.php            Web 应用配置
+         test.php            功能测试使用的配置
+      controllers/           包含控制器的类文件
+         SiteController.php  默认控制器的类文件
+      data/                  包含示例数据库
+         schema.mysql.sql    示例 MySQL 数据库
+         schema.sqlite.sql   示例 SQLite 数据库
+         testdrive.db        示例 SQLite 数据库文件
+      extensions/            包含第三方扩展
+      messages/              包含翻译过的消息
+      models/                包含模型的类文件
+         LoginForm.php       'login' 动作的表单模型
+         ContactForm.php     'contact' 动作的表单模型
+      runtime/               包含临时生成的文件
+      tests/                 包含测试脚本
+      views/                 包含控制器的视图和布局文件
+         layouts/            包含布局视图文件
+            main.php         所有视图的默认布局
+            column1.php      使用单列页面使用的布局
+            column2.php      使用双列的页面使用的布局
+         site/               包含 'site' 控制器的视图文件
+            pages/           包含 "静态" 页面
+               about.php     "about" 页面的视图
+            contact.php      'contact' 动作的视图
+            error.php        'error' 动作的视图(显示外部错误)
+            index.php        'index' 动作的视图
+            login.php        'login' 动作的视图
+         system/             包含系统视图文件
+         
+projectName/Resources(图片等素材)
+           /Sources(代码)/ViewController(控制器)
+                        /Service(一些第三方比如支付宝，提供给controller的封装好的接口)
+                        /External(引入的第三方库)
+                        /Net(网络请求)
+                        /Model(模型)
+                        /Util(工具类)
+                        /Custom(自定义的文件)/Catergory(自定义的扩展类)
+                                           /Config(项目配置文件)
+                                           /View(视图)
+                                           /Util(工具类)
+```
 
 
 ## 参考内容
@@ -610,11 +686,3 @@ projectName/Resources(图片等素材)
 
 
 
-## 参考内容
-- [Coding Guidelines for Cocoa](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CodingGuidelines/CodingGuidelines.html#//apple_ref/doc/uid/10000146-SW1)
-- [The official raywenderlich.com Objective-C style guide.](https://github.com/raywenderlich/objective-c-style-guide)
-- [NYTimes Objective-C Style Guide](https://github.com/NYTimes/objective-c-style-guide)
-- [Coding Guidelines for Cocoa (Github)](https://github.com/github/objective-c-conventions)
-- [Google Objective-C Style Guide](http://google-styleguide.googlecode.com/svn/trunk/objcguide.xml)
-- [Google 开源项目风格指南](http://zh-google-styleguide.readthedocs.org/en/latest/google-objc-styleguide/contents/)
-- [编写高质量的Objective-C代码](http://www.cnblogs.com/xdream86/p/3309345.html)
