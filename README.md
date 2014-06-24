@@ -397,65 +397,22 @@ TODO: 代码中的注释
 ## iOS 工程结构
 
 **目录结构**
-```
-testdrive/
-   index.php                 Web 应用入口脚本文件
-   index-test.php            功能测试使用的入口脚本文件
-   assets/                   包含公开的资源文件
-   css/                      包含 CSS 文件
-   images/                   包含图片文件
-   themes/                   包含应用主题
-   protected/                包含受保护的应用文件
-      yiic                   yiic 命令行脚本
-      yiic.bat               Windows 下的 yiic 命令行脚本
-      yiic.php               yiic 命令行 PHP 脚本
-      commands/              包含自定义的 'yiic' 命令
-         shell/              包含自定义的 'yiic shell' 命令
-      components/            包含可重用的用户组件
-         Controller.php      所有控制器类的基础类
-         Identity.php        用来认证的 'Identity' 类
-      config/                包含配置文件
-         console.php         控制台应用配置
-         main.php            Web 应用配置
-         test.php            功能测试使用的配置
-      controllers/           包含控制器的类文件
-         SiteController.php  默认控制器的类文件
-      data/                  包含示例数据库
-         schema.mysql.sql    示例 MySQL 数据库
-         schema.sqlite.sql   示例 SQLite 数据库
-         testdrive.db        示例 SQLite 数据库文件
-      extensions/            包含第三方扩展
-      messages/              包含翻译过的消息
-      models/                包含模型的类文件
-         LoginForm.php       'login' 动作的表单模型
-         ContactForm.php     'contact' 动作的表单模型
-      runtime/               包含临时生成的文件
-      tests/                 包含测试脚本
-      views/                 包含控制器的视图和布局文件
-         layouts/            包含布局视图文件
-            main.php         所有视图的默认布局
-            column1.php      使用单列页面使用的布局
-            column2.php      使用双列的页面使用的布局
-         site/               包含 'site' 控制器的视图文件
-            pages/           包含 "静态" 页面
-               about.php     "about" 页面的视图
-            contact.php      'contact' 动作的视图
-            error.php        'error' 动作的视图(显示外部错误)
-            index.php        'index' 动作的视图
-            login.php        'login' 动作的视图
-         system/             包含系统视图文件
 
-projectName/Resources(图片等素材)
-           /Sources(代码)/ViewController(控制器)
-                        /Service(一些第三方比如支付宝，提供给controller的封装好的接口)
-                        /External(引入的第三方库)
-                        /Net(网络请求)
-                        /Model(模型)
-                        /Util(工具类)
-                        /Custom(自定义的文件)/Catergory(自定义的扩展类)
-                                           /Config(项目配置文件)
-                                           /View(视图)
-                                           /Util(工具类)
+```
+projectName/
+    Resources                   图片等素材
+    Sources                     代码
+        /ViewController         控制器
+        /Service                一些第三方比如支付宝，提供给controller的封装好的接口
+        /External               引入的第三方库
+        /Net                    网络请求
+        /Model                  模型
+        /Util                   工具类
+        /Custom                 自定义的文件
+            /Catergory          自定义的扩展类
+            /Config             项目配置文件
+            /View               视图
+            /Util               工具类
 ```
 
 
@@ -674,19 +631,6 @@ return self; \
 - (NSString *)description {}
 ```
 
-目录说明
-
-projectName/Resources(图片等素材)
-           /Sources(代码)/ViewController(控制器)
-                        /Service(一些第三方比如支付宝，提供给controller的封装好的接口)
-                        /External(引入的第三方库)
-                        /Net(网络请求)
-                        /Model(模型)
-                        /Util(工具类)
-                        /Custom(自定义的文件)/Catergory(自定义的扩展类)
-                                           /Config(项目配置文件)
-                                           /View(视图)
-                                           /Util(工具类)
 
 
 
