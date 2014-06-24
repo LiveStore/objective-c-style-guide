@@ -323,7 +323,12 @@ void (^largeBlock)(void) = ^{
 - 方法名不要使用 `new` 作为前缀。
 
 一个方法的命名首先描述返回什么，接着是什么情况下被返回。
+
+**参考:**
+
+```objc
 emails = [mailbox messagesReceivedAfterDate:yesterdayDate]; // thing + condition + type
+```
 
 ### Objective-C 方法参数名
 
@@ -439,7 +444,7 @@ testdrive/
             index.php        'index' 动作的视图
             login.php        'login' 动作的视图
          system/             包含系统视图文件
-         
+
 projectName/Resources(图片等素材)
            /Sources(代码)/ViewController(控制器)
                         /Service(一些第三方比如支付宝，提供给controller的封装好的接口)
