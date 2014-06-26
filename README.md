@@ -240,9 +240,9 @@ label.title = (title ? title : @"");
 
 - 如果一行可以写完块，则没必要换行。
 - 如果不得不换行，关括号应与块声明的第一个字符对齐。
-- 块内的代码须按 4 空格缩进。
-- 如果块太长，比如超过 20 行，建议把它定义成一个局部变量，然后再使用该变量。
-- 如果块不带参数，^{ 之间无须空格。如果带有参数，^( 之间无须空格，但 ) { 之间须有一个空格。
+- 块内的代码须按 `4` 空格缩进。
+- 如果块太长，比如超过 `20` 行，建议把它定义成一个局部变量，然后再使用该变量。
+- 如果块不带参数，`^{` 之间无须空格。如果带有参数，`^(` 之间无须空格，但 `) {` 之间须有一个空格。
 
 ```objc
 // The entire block fits on one line.
@@ -368,8 +368,24 @@ NSImage *previewPaneImage;
 
 ### 图片资源命名
 
+图片文件命名采用 `type_location_identifier_state` 规则
+
 TODO
 
+- icon
+- btn
+- bg
+- line
+- logo
+- pic
+- img
+
+使用图片时候不要有 `.png` 后缀
+
+**参考:**
+```
+UIImage *settingIcon = [UIImage imageNamed:@"icon_common_setting"];
+```
 
 ## 注释
 
