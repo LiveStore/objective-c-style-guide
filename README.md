@@ -401,8 +401,18 @@ UIImage *settingIcon = [UIImage imageNamed:@"icon_common_setting"];
 
 **例如:**
 
+添加 `Owner` 行，格式要求 `Owner: [英文名、拼音名] - [电子邮件]`
+
 ```objc
-TODO
+//
+//  COSViewController.h
+//  Belle
+//
+//  Created by Cash on 14-6-29.
+//  Copyright (c) 2014年 Cosmopolitan. All rights reserved.
+//
+//  Owner: Cash - wangwei@trends.com.cn
+//
 ```
 
 TODO: 声明部分的注释
